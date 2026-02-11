@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dq176hivdvfst"]
+
+[ext_resource type="PackedScene" uid="uid://d0hg4ebx60y2q" path="res://die.glb" id="1_a202f"]
+[ext_resource type="Script" uid="uid://c378iouy82dla" path="res://dobbelsteen.gd" id="1_noarx"]
+[ext_resource type="Script" uid="uid://xj3yto1sdhuc" path="res://camera_3d.gd" id="3_a0tk4"]
+[ext_resource type="Script" uid="uid://drojfta26r8s7" path="res://control.gd" id="4_r3fl7"]
+[ext_resource type="FontFile" uid="uid://co4bl182lvcoc" path="res://PixelCaps!.ttf" id="5_jka67"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_noarx"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a0tk4"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5arm"]
+bg_color = Color(0.8745098, 0.2627451, 0.6, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wc5p8"]
+bg_color = Color(0.8745098, 0.2627451, 0.6, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsk3o"]
+bg_color = Color(0.8745098, 0.2627451, 0.6, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4arys"]
+bg_color = Color(0.8745098, 0.2627451, 0.6, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6iypd"]
+bg_color = Color(0.8745098, 0.2627451, 0.6, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Node3D" type="Node3D" unique_id=438247106]
+
+[node name="Dobbelsteen" type="RigidBody3D" parent="." unique_id=554954057]
+continuous_cd = true
+script = ExtResource("1_noarx")
+
+[node name="die" parent="Dobbelsteen" unique_id=396652170 instance=ExtResource("1_a202f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18050337, 0, 0.018813968)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dobbelsteen" unique_id=86217189]
+shape = SubResource("BoxShape3D_noarx")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1350577901]
+transform = Transform3D(1, 0, 0, 0, 0.99510056, 0.0988682, 0, -0.0988682, 0.99510056, 0, 2, 3)
+current = true
+fov = 119.88942
+script = ExtResource("3_a0tk4")
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=789265055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1841278860]
+mesh = SubResource("BoxMesh_noarx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=143837091]
+shape = SubResource("BoxShape3D_a0tk4")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=919967036]
+
+[node name="Control" type="Control" parent="UI" unique_id=947958195]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_r3fl7")
+
+[node name="Player1 button" type="Button" parent="UI/Control" unique_id=190628016]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 274.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("5_jka67")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5arm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wc5p8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jsk3o")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4arys")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6iypd")
+text = "Player 1 Roll The Dice"
+
+[node name="Player2 button" type="Button" parent="UI/Control" unique_id=319432043]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 130.0
+offset_right = 276.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("5_jka67")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5arm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wc5p8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jsk3o")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4arys")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6iypd")
+text = "Player 2 Roll The Dice"
+
+[node name="Player3 button" type="Button" parent="UI/Control" unique_id=439855160]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 210.0
+offset_right = 276.0
+offset_bottom = 270.0
+theme_override_fonts/font = ExtResource("5_jka67")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_i5arm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wc5p8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jsk3o")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4arys")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6iypd")
+text = "Player 3 Roll The Dice"
+
+[node name="Result Label" type="Label" parent="UI/Control" unique_id=1608460796]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 355.0
+offset_bottom = 325.0
+theme_override_fonts/font = ExtResource("5_jka67")
+theme_override_font_sizes/font_size = 10
+text = "Roll The Dice"
